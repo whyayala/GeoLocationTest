@@ -25,45 +25,45 @@ public class MainActivity extends Activity {
         LocationListener mlocListener = new MyLocationListener();
         mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, mlocListener);
 
-        // Class My Location Listener
-        public class MyLocationListener implements LocationListener {
-
-            @Override
-            public void onLocationChanged(Location loc) {
-                loc.getLatitude();
-                loc.getLongitude();
-                String Text = "My current location is: " +
-                        "Latitude = " + loc.getLatitude() +
-                        "Longitude = " + loc.getLongitude();
-                Toast.makeText(
-                        getApplicationContext(),
-                        Text,
-                        Toast.LENGTH_SHORT).show();
-            }
-
-
-            @Override
-            public void onProviderDisabled(String provider) {
-                Toast.makeText(
-                        getApplicationContext(),
-                        "Gps Disabled",
-                        Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onProviderEnabled(String provider){
-                Toast.makeText(
-                        getApplicationContext(),
-                        "Gps Enabled",
-                        Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras){}
-
-        }
-        //End My Location Listener
     }
+    // Class My Location Listener
+    private class MyLocationListener implements LocationListener {
+
+        @Override
+        public void onLocationChanged(Location loc) {
+            loc.getLatitude();
+            loc.getLongitude();
+            String Text =
+                    "My current location is: " +
+                            "Latitude = " + loc.getLatitude() +
+                            "Longitude = " + loc.getLongitude();
+            Toast.makeText(
+                    getApplicationContext(),
+                    Text,
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+            Toast.makeText(
+                    getApplicationContext(),
+                    "Gps Disabled",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onProviderEnabled(String provider){
+            Toast.makeText(
+                    getApplicationContext(),
+                    "Gps Enabled",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras){}
+
+    }
+    //End My Location Listener
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -86,4 +86,6 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
+
